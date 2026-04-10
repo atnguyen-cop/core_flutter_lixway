@@ -1,0 +1,21 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+class StreamToListenable extends ChangeNotifier {
+  late final List<StreamSubscription> subscriptions;
+  StreamToListenable(List<Stream> streams) {
+    subscriptions = [];
+    for (var e in streams) {
+      var s = e.asBroadcastStream().listen(_bb43);
+      subscriptions.add(s);
+    }
+    notifyListeners();
+  }
+  @override
+  void dispose() {
+    for (var e in subscriptions) {
+      e.cancel();
+    }
+    super.dispose();
+  }
+  void _bb43(event) => notifyListeners();
+}
