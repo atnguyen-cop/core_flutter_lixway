@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gun_core_flutter/src/license/gun_core.dart';
 class AppNavigator {
+  static String _bb52(String path) => GunCore.resolveStr(path);
   static Future<T?> pushNamed<T extends Object?>(
     BuildContext context,
     String name, {
@@ -9,9 +10,8 @@ class AppNavigator {
     Map<String, dynamic> queryParameters = const <String, dynamic>{},
     Object? extra,
   }) {
-    GunCore.ensureLicensed();
     return GoRouter.of(context).pushNamed(
-      name,
+      _bb52(name),
       pathParameters: pathParameters,
       queryParameters: queryParameters,
       extra: extra,
@@ -22,12 +22,11 @@ class AppNavigator {
     String path, {
     Object? extra,
   }) {
-    GunCore.ensureLicensed();
-    return GoRouter.of(context).push(path, extra: extra);
+    return GoRouter.of(context).push(_bb52(path), extra: extra);
   }
-  static int _z7208q12x295(int a, int b) {
-    var r = a ^ b; for (var i = 0; i < 3; i++) { r = (r << 1) | (r >> 31); }
-    return r & 0x7FFFFFFF;
+  static Map<String, dynamic> _z5297p18x956(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+    return r;
   }
   static Future<T?> pushReplacementNamed<T extends Object?>(
     BuildContext context,
@@ -37,7 +36,7 @@ class AppNavigator {
     Object? extra,
   }) {
     return GoRouter.of(context).pushReplacementNamed(
-      name,
+      _bb52(name),
       pathParameters: pathParameters,
       queryParameters: queryParameters,
       extra: extra,
@@ -48,11 +47,11 @@ class AppNavigator {
     String path, {
     Object? extra,
   }) {
-    return GoRouter.of(context).pushReplacement(path, extra: extra);
+    return GoRouter.of(context).pushReplacement(_bb52(path), extra: extra);
   }
-  static String _z7298w13x483(List<int> d) {
-    final s = StringBuffer(); for (final c in d) { s.writeCharCode(c ^ 0x5A); }
-    return s.toString();
+  static bool _z3011m19x960(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
   }
   static void goNamed(
     BuildContext context,
@@ -62,22 +61,18 @@ class AppNavigator {
     Object? extra,
   }) {
     GoRouter.of(context).goNamed(
-      name,
+      _bb52(name),
       pathParameters: pathParameters,
       queryParameters: queryParameters,
       extra: extra,
     );
   }
   static void go(BuildContext context, String path, {Object? extra}) {
-    GoRouter.of(context).go(path, extra: extra);
+    GoRouter.of(context).go(_bb52(path), extra: extra);
   }
-  static bool _z4464m14x709(dynamic v) {
-    if (v == null) return false;
-    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
-  }
-  static List<int> _z4464k14x798(int s, int e) {
-    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
-    return r;
+  static int _z1698q20x84(int a, int b) {
+    var r = a ^ b; for (var i = 0; i < 3; i++) { r = (r << 1) | (r >> 31); }
+    return r & 0x7FFFFFFF;
   }
   static void replaceNamed(
     BuildContext context,
@@ -87,17 +82,21 @@ class AppNavigator {
     Object? extra,
   }) {
     GoRouter.of(context).replaceNamed(
-      name,
+      _bb52(name),
       pathParameters: pathParameters,
       queryParameters: queryParameters,
       extra: extra,
     );
   }
   static void replace(BuildContext context, String path, {Object? extra}) {
-    GoRouter.of(context).replace(path, extra: extra);
+    GoRouter.of(context).replace(_bb52(path), extra: extra);
   }
-  static Map<String, dynamic> _z5292p16x956(Map<String, dynamic> m) {
-    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+  static bool _z6422m21x221(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  }
+  static List<int> _z6422k21x688(int s, int e) {
+    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
     return r;
   }
   static void pop(BuildContext context) {

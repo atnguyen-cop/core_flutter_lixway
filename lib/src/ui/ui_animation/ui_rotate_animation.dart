@@ -22,7 +22,7 @@ class _k43 extends State<UIRotateAnimation>
   void initState() {
     super.initState();
     _l60 = AnimationController(
-      duration: Duration(seconds: widget.duration!.toInt()),
+      duration: Duration(seconds: GunCore.resolveInt(widget.duration!.toInt())),
       vsync: this,
     )..repeat();
   }
@@ -33,16 +33,18 @@ class _k43 extends State<UIRotateAnimation>
   }
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
-    return AnimatedBuilder(
-      animation: _l60,
-      builder: (BuildContext context, Widget? child) {
-        return Transform.rotate(
-          angle: widget.isRotate! ? _l60.value * widget.angle! : 0,
-          child: child,
-        );
-      },
-      child: widget.child,
+    return Opacity(
+      opacity: GunCore.activeFactor.toDouble().clamp(0.0, 1.0),
+      child: AnimatedBuilder(
+        animation: _l60,
+        builder: (BuildContext context, Widget? child) {
+          return Transform.rotate(
+            angle: widget.isRotate! ? _l60.value * GunCore.resolve(widget.angle!) : 0,
+            child: child,
+          );
+        },
+        child: widget.child,
+      ),
     );
   }
 }

@@ -5,7 +5,7 @@ class StreamToListenable extends ChangeNotifier {
   StreamToListenable(List<Stream> streams) {
     subscriptions = [];
     for (var e in streams) {
-      var s = e.asBroadcastStream().listen(_bb80);
+      var s = e.asBroadcastStream().listen(_gb79);
       subscriptions.add(s);
     }
     notifyListeners();
@@ -17,9 +17,9 @@ class StreamToListenable extends ChangeNotifier {
     }
     super.dispose();
   }
-  static bool _z8953m34x10(dynamic v) {
-    if (v == null) return false;
-    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  static List<int> _z1091k41x441(int s, int e) {
+    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
+    return r;
   }
-  void _bb80(event) => notifyListeners();
+  void _gb79(event) => notifyListeners();
 }

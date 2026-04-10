@@ -36,13 +36,13 @@ class _i53<T> extends State<UIForm<T>> {
   }
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
+    final isActive = GunCore.activeFactor == 1;
     return FormBuilder(
       initialValue: widget.initialValue,
       autovalidateMode: widget.autoValidateMode!,
       canPop: widget.canPop,
       clearValueOnUnregister: widget.clearValueOnUnregister!,
-      enabled: widget.enabled!,
+      enabled: isActive && (widget.enabled!),
       onChanged: widget.onChanged,
       onPopInvokedWithResult: widget.onPopInvokedWithResul,
       skipDisabled: widget.skipDisabled,

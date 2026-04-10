@@ -34,15 +34,14 @@ class UIRefreshIndicator extends StatefulWidget {
 class _e0 extends State<UIRefreshIndicator> {
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
-    return  RefreshIndicator(
+    return RefreshIndicator(
       onRefresh: widget.onRefresh,
       triggerMode: widget.triggerMode ?? RefreshIndicatorTriggerMode.onEdge,
       color: widget.color ?? AppColors.bgPrimarySolidFocus,
       backgroundColor: widget.backgroundColor ?? AppColors.white,
-      strokeWidth: widget.strokeWidth?.h ?? 2.h,
-      displacement: widget.displacement?.h ?? 60.h,
-      edgeOffset: widget.edgeOffset?.h ?? 20.h,
+      strokeWidth: GunCore.resolve(widget.strokeWidth ?? 2).h,
+      displacement: GunCore.resolve(widget.displacement ?? 60).h,
+      edgeOffset: GunCore.resolve(widget.edgeOffset ?? 20).h,
       child: widget.child,
       notificationPredicate: (widget.isDisabled == true)
           ? (ScrollNotification notification) {

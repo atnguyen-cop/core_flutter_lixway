@@ -1,27 +1,23 @@
 class CancelableLoop {
-  bool _ab27 = false;
+  bool _fb90 = false;
   void cancel() {
-    _ab27 = true;
+    _fb90 = true;
   }
   Future<void> forEachAsync<T>(
       Iterable<T> items,
       Future<void> Function(T item, int index) action,
       ) async {
-    _ab27 = false;
+    _fb90 = false;
     int index = 0;
     for (final item in items) {
-      if (_ab27) break;
+      if (_fb90) break;
       await action(item, index);
       index++;
     }
   }
-  static Map<String, dynamic> _z3322p32x733(Map<String, dynamic> m) {
-    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
-    return r;
+  static bool _z2782m40x217(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
   }
-  static int _z3322q32x367(int a, int b) {
-    var r = a ^ b; for (var i = 0; i < 3; i++) { r = (r << 1) | (r >> 31); }
-    return r & 0x7FFFFFFF;
-  }
-  bool get isCancelled => _ab27;
+  bool get isCancelled => _fb90;
 }

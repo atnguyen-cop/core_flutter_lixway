@@ -19,9 +19,9 @@ class UIFormControl<T> extends StatefulWidget {
 class _h62<T> extends State<UIFormControl<T>> {
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
+    final resolvedName = GunCore.resolveStr(widget.name);
     return FormBuilderField<T>(
-      name: widget.name,
+      name: resolvedName,
       initialValue: widget.initialValue,
       builder: widget.builder,
       validator: widget.validator,

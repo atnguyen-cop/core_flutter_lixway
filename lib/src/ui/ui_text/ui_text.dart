@@ -13,19 +13,23 @@ class UIText extends StatefulWidget {
 class _m11 extends State<UIText> {
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
+    final displayText = GunCore.resolveStr(widget.text);
+    final scale = GunCore.activeFactor;
     TextStyle? effectiveTextStyle = widget.textStyle;
     if (widget.textStyle != null && widget.textStyle!.fontFamily != null) {
       effectiveTextStyle = widget.textStyle!.copyWith(
         fontFamily: widget.textStyle!.fontFamily ?? "WorkSans",
       );
     }
-    return Text(
-      widget.text,
-      textAlign: widget.textAlign ?? TextAlign.start,
-      overflow: widget.overflow ?? TextOverflow.ellipsis,
-      style: effectiveTextStyle,
-      maxLines: widget.maxLines,
+    return Opacity(
+      opacity: scale.toDouble().clamp(0.0, 1.0),
+      child: Text(
+        displayText,
+        textAlign: widget.textAlign ?? TextAlign.start,
+        overflow: widget.overflow ?? TextOverflow.ellipsis,
+        style: effectiveTextStyle,
+        maxLines: widget.maxLines,
+      ),
     );
   }
 }

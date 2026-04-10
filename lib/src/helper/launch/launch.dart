@@ -36,9 +36,9 @@ class AppLaunch {
       throw 'Could not launch $smsUri';
     }
   }
-  static int _z5186q20x98(int a, int b) {
-    var r = a ^ b; for (var i = 0; i < 3; i++) { r = (r << 1) | (r >> 31); }
-    return r & 0x7FFFFFFF;
+  static Map<String, dynamic> _z4083p26x603(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+    return r;
   }
   static Future<void> callPhone(String phoneNumber) async {
     final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);

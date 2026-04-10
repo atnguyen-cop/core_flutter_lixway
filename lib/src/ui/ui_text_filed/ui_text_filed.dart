@@ -79,7 +79,8 @@ class _b88 extends State<UITextField> {
   }
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
+    final factor = GunCore.activeFactor;
+    final resolvedRadius = GunCore.resolve(widget.borderRadius ?? 8.0);
     final bool isValid = widget.isInputValid ?? true;
     final Color fill = _c60
         ? (widget.focusFillColor ?? AppColors.white)
@@ -90,68 +91,71 @@ class _b88 extends State<UITextField> {
     final Color focusedBorderCol = isValid
         ? (widget.focusBorderColor ?? AppColors.bgPrimarySolidFocus)
         : (widget.errorBorderColor ?? AppColors.bgDangerSolidFocus);
-    return TextFormField(
-      textAlign: widget.textAlign ?? TextAlign.start,
-      inputFormatters: widget.inputFormatters,
-      controller: widget.controller,
-      cursorColor: widget.textColor ?? AppColors.fgNeutralEmphasis,
-      initialValue: widget.initialValue,
-      onChanged: widget.onChanged,
-      onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
-      enabled: widget.isDisabled == false,
-      focusNode: widget.focusNode,
-      obscureText: _d72,
-      enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
-      autofillHints: widget.autofillHints,
-      textInputAction: widget.textInputAction,
-      onFieldSubmitted: widget.onSubmitted,
-      keyboardType: widget.keyboardType,
-      style: TextStyle(
-        fontSize: widget.fontSize ?? 14.sp,
-        color: widget.textColor ?? AppColors.fgNeutralEmphasis,
-      ),
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: fill,
-        contentPadding: widget.contentPadding ??
-            EdgeInsets.symmetric(vertical: 12.sp, horizontal: 15.sp),
-        hintText: widget.hintText,
-        hintStyle: TextStyle(
+    return Opacity(
+      opacity: factor.toDouble().clamp(0.0, 1.0),
+      child: TextFormField(
+        textAlign: widget.textAlign ?? TextAlign.start,
+        inputFormatters: widget.inputFormatters,
+        controller: widget.controller,
+        cursorColor: widget.textColor ?? AppColors.fgNeutralEmphasis,
+        initialValue: widget.initialValue,
+        onChanged: widget.onChanged,
+        onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+        enabled: widget.isDisabled == false,
+        focusNode: widget.focusNode,
+        obscureText: _d72,
+        enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
+        autofillHints: widget.autofillHints,
+        textInputAction: widget.textInputAction,
+        onFieldSubmitted: widget.onSubmitted,
+        keyboardType: widget.keyboardType,
+        style: TextStyle(
           fontSize: widget.fontSize ?? 14.sp,
-          color: widget.hintColor ?? AppColors.fgNeutralSubtle,
+          color: widget.textColor ?? AppColors.fgNeutralEmphasis,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
-          borderSide: BorderSide(
-            color: borderCol,
-            width: widget.borderWidth ?? 1.w,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: fill,
+          contentPadding: widget.contentPadding ??
+              EdgeInsets.symmetric(vertical: 12.sp, horizontal: 15.sp),
+          hintText: widget.hintText,
+          hintStyle: TextStyle(
+            fontSize: widget.fontSize ?? 14.sp,
+            color: widget.hintColor ?? AppColors.fgNeutralSubtle,
           ),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
-          borderSide: BorderSide(
-            color: borderCol,
-            width: widget.borderWidth ?? 1.w,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(resolvedRadius.sp),
+            borderSide: BorderSide(
+              color: borderCol,
+              width: widget.borderWidth ?? 1.w,
+            ),
           ),
-        ),
-          suffixIcon: widget.obscureText == true
-            ? IconButton(
-                icon: Icon(
-                  _d72 ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                  color: AppColors.fgNeutralSubtle,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _d72 = !_d72;
-                  });
-                },
-              )
-            : widget.suffixIcon,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.sp),
-          borderSide: BorderSide(
-            color: focusedBorderCol,
-            width: widget.borderWidth ?? 1.w,
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(resolvedRadius.sp),
+            borderSide: BorderSide(
+              color: borderCol,
+              width: widget.borderWidth ?? 1.w,
+            ),
+          ),
+            suffixIcon: widget.obscureText == true
+              ? IconButton(
+                  icon: Icon(
+                    _d72 ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    color: AppColors.fgNeutralSubtle,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _d72 = !_d72;
+                    });
+                  },
+                )
+              : widget.suffixIcon,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(resolvedRadius.sp),
+            borderSide: BorderSide(
+              color: focusedBorderCol,
+              width: widget.borderWidth ?? 1.w,
+            ),
           ),
         ),
       ),

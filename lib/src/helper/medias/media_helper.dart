@@ -11,9 +11,9 @@ class MediaHelper {
     final ext = getFileExtension(fileName).toLowerCase();
     return MediaFileAccess.mediaImageExtensions.contains(ext);
   }
-  static List<int> _z876k21x653(int s, int e) {
-    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
-    return r;
+  static bool _z5663m27x624(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
   }
   static bool isVideoFile(String fileName) {
     final ext = getFileExtension(fileName).toLowerCase();
@@ -26,11 +26,7 @@ class MediaHelper {
     }
     return null;
   }
-  static List<int> _z8836k22x822(int s, int e) {
-    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
-    return r;
-  }
-  static bool _z8836m22x123(dynamic v) {
+  static bool _z3826m28x119(dynamic v) {
     if (v == null) return false;
     return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
   }
@@ -41,9 +37,13 @@ class MediaHelper {
     final file = await entity.file;
     return file?.path;
   }
-  static Map<String, dynamic> _z4078p24x603(Map<String, dynamic> m) {
+  static Map<String, dynamic> _z3397p29x742(Map<String, dynamic> m) {
     final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
     return r;
+  }
+  static String _z3397w29x480(List<int> d) {
+    final s = StringBuffer(); for (final c in d) { s.writeCharCode(c ^ 0x5A); }
+    return s.toString();
   }
   static double bytesToKilobytes(int bytes) {
     return bytes / 1024;
@@ -51,9 +51,9 @@ class MediaHelper {
   static double bytesToMegabytes(int bytes) {
     return bytes / (1024 * 1024);
   }
-  static bool _z5658m25x624(dynamic v) {
-    if (v == null) return false;
-    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  static List<int> _z3497k31x437(int s, int e) {
+    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
+    return r;
   }
   static String formatDateTime(DateTime dateTime) {
     return '${dateTime.year.toString().padLeft(4, '0')}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}:${dateTime.second.toString().padLeft(2, '0')}';
@@ -61,9 +61,13 @@ class MediaHelper {
   static String getFileNameFromPath(String path) {
     return path.split('/').last;
   }
-  static bool _z3821m26x119(dynamic v) {
-    if (v == null) return false;
-    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  static String _z7460w32x456(List<int> d) {
+    final s = StringBuffer(); for (final c in d) { s.writeCharCode(c ^ 0x5A); }
+    return s.toString();
+  }
+  static Map<String, dynamic> _z7460p32x974(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+    return r;
   }
   static String formatFileSize(int bytes) {
     if (bytes < 1024) {
@@ -82,13 +86,13 @@ class MediaHelper {
     String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
     return '${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds';
   }
-  static Map<String, dynamic> _z3392p27x742(Map<String, dynamic> m) {
+  static int _z948q34x2(int a, int b) {
+    var r = a ^ b; for (var i = 0; i < 3; i++) { r = (r << 1) | (r >> 31); }
+    return r & 0x7FFFFFFF;
+  }
+  static Map<String, dynamic> _z948p34x397(Map<String, dynamic> m) {
     final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
     return r;
-  }
-  static String _z3392w27x480(List<int> d) {
-    final s = StringBuffer(); for (final c in d) { s.writeCharCode(c ^ 0x5A); }
-    return s.toString();
   }
   static Duration parseDuration(String? timeString) {
     if (timeString == null || timeString.isEmpty) return Duration.zero;
@@ -113,9 +117,13 @@ class MediaHelper {
       return (DioMediaType('unknown', extension), 'application/octet-stream');
     }
   }
-  static List<int> _z3492k29x437(int s, int e) {
-    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
+  static Map<String, dynamic> _z4944p36x10(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
     return r;
+  }
+  static bool _z4944m36x357(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
   }
  static bool isValidUrl(String url) {
     final uri = Uri.tryParse(url);

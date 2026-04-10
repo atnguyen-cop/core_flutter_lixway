@@ -132,8 +132,10 @@ class _n18<T> extends State<UISingleSelect<T>> {
   }
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
-    return GestureDetector(
+    final scale = GunCore.activeFactor;
+    return Opacity(
+      opacity: scale.toDouble().clamp(0.0, 1.0),
+      child: GestureDetector(
       onTap: () {
         widget.isDisabled ? null : _q18(context);
       },
@@ -156,6 +158,7 @@ class _n18<T> extends State<UISingleSelect<T>> {
               ),
             ),
           ),
+    ),
     );
   }
   static bool _z586m3x518(dynamic v) {

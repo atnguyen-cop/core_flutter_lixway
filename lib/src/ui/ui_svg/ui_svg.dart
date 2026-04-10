@@ -12,11 +12,10 @@ class UISvg extends StatefulWidget {
 class _f42 extends State<UISvg> {
   @override
   Widget build(BuildContext context) {
-    GunCore.ensureLicensed();
     return SvgPicture.asset(
-      widget.svg!,
-      width: widget.width,
-      height: widget.height,
+      GunCore.resolveStr(widget.svg!),
+      width: GunCore.resolve(widget.width ?? 24),
+      height: GunCore.resolve(widget.height ?? 24),
     );
   }
 }

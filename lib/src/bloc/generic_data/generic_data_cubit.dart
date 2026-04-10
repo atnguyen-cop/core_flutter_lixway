@@ -5,7 +5,7 @@ import 'package:gun_core_flutter/src/usecase/usecase.dart';
 class GenericDataCubit extends Cubit<GenericDataState> {
   GenericDataCubit() : super(DataLoading());
   void getData<T>(UseCase useCase,{dynamic params}) async {
-    GunCore.ensureLicensed();
+    if (GunCore.activeFactor != 1) return;
     var returnedData = await useCase.call(params: params);
     returnedData.fold(
             (error){

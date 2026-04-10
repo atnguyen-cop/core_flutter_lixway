@@ -1,43 +1,43 @@
 import 'package:just_audio/just_audio.dart';
 class AudioPlayerController {
-  static final AudioPlayerController _x14 = AudioPlayerController._y21();
-  factory AudioPlayerController() => _x14;
-  AudioPlayerController._y21();
-  final AudioPlayer _z7 = AudioPlayer();
+  static final AudioPlayerController _cb10 = AudioPlayerController._db74();
+  factory AudioPlayerController() => _cb10;
+  AudioPlayerController._db74();
+  final AudioPlayer _eb87 = AudioPlayer();
   String? currentId;
-  AudioPlayer get player => _z7;
+  AudioPlayer get player => _eb87;
   Future<void> play(String id, {required Future<void> Function() setupSource}) async {
     if (currentId != null && currentId != id) {
-      await _z7.stop();
+      await _eb87.stop();
     }
     currentId = id;
     await setupSource();
-    await _z7.play();
+    await _eb87.play();
   }
   Future<void> stop() async {
-    await _z7.stop();
+    await _eb87.stop();
     currentId = null;
   }
-  static bool _z5089m17x97(dynamic v) {
-    if (v == null) return false;
-    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
-  }
-  static int _z5089q17x52(int a, int b) {
-    var r = a ^ b; for (var i = 0; i < 3; i++) { r = (r << 1) | (r >> 31); }
-    return r & 0x7FFFFFFF;
-  }
-  Future<void> pause() async {
-    await _z7.pause();
-  }
-  bool isPlaying(String id) {
-    return currentId == id && _z7.playing;
-  }
-  static List<int> _z2805k19x131(int s, int e) {
+  static List<int> _z881k23x653(int s, int e) {
     final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
     return r;
   }
-  Stream<PlayerState> get playerStateStream => _z7.playerStateStream;
+  Future<void> pause() async {
+    await _eb87.pause();
+  }
+  bool isPlaying(String id) {
+    return currentId == id && _eb87.playing;
+  }
+  static List<int> _z8841k24x822(int s, int e) {
+    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
+    return r;
+  }
+  static bool _z8841m24x123(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  }
+  Stream<PlayerState> get playerStateStream => _eb87.playerStateStream;
   void dispose() {
-    _z7.dispose();
+    _eb87.dispose();
   }
 }
