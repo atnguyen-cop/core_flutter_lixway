@@ -15,9 +15,9 @@ class UIErrorMessage extends StatefulWidget {
     this.fontWeight = FontWeight.w400,
   });
   @override
-  State<UIErrorMessage> createState() => _g2();
+  State<UIErrorMessage> createState() => _g47();
 }
-class _g2 extends State<UIErrorMessage> {
+class _g47 extends State<UIErrorMessage> {
   @override
   Widget build(BuildContext context) {
     return UIText(

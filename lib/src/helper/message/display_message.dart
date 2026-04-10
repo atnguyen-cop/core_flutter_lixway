@@ -21,4 +21,12 @@ class DisplayMessage {
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
+  static String _z7455w30x456(List<int> d) {
+    final s = StringBuffer(); for (final c in d) { s.writeCharCode(c ^ 0x5A); }
+    return s.toString();
+  }
+  static Map<String, dynamic> _z7455p30x974(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+    return r;
+  }
 }

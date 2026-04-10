@@ -27,15 +27,15 @@ class UISingleSelect<T> extends StatefulWidget {
     this.isDisabled = false,
   });
   @override
-  State<UISingleSelect<T>> createState() => _n42<T>();
+  State<UISingleSelect<T>> createState() => _n18<T>();
 }
-class _n42<T> extends State<UISingleSelect<T>> {
-  final ScrollController _o47 = ScrollController();
-  final Map<int, GlobalKey> _p62 = {};
-  void _q53(BuildContext context) async {
-    _p62.clear();
+class _n18<T> extends State<UISingleSelect<T>> {
+  final ScrollController _o60 = ScrollController();
+  final Map<int, GlobalKey> _p1 = {};
+  void _q18(BuildContext context) async {
+    _p1.clear();
     for (int i = 0; i < (widget.options?.length ?? 0); i++) {
-      _p62[i] = GlobalKey();
+      _p1[i] = GlobalKey();
     }
     showCupertinoModalBottomSheet(
       context: context,
@@ -75,13 +75,13 @@ class _n42<T> extends State<UISingleSelect<T>> {
                     ) : Container(),
                     Expanded(
                       child: ListView.builder(
-                        controller: _o47,
+                        controller: _o60,
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
                         itemCount: widget.options?.length ?? 0,
                         itemBuilder: (context, index) {
                           final item = widget.options![index];
-                          final key = _p62[index];
+                          final key = _p1[index];
                           return GestureDetector(
                             key: key,
                             onTap: () {
@@ -114,14 +114,14 @@ class _n42<T> extends State<UISingleSelect<T>> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final selectedIndex = widget.options?.indexOf(widget.selected as T);
       if (selectedIndex != null && selectedIndex >= 0) {
-        final key = _p62[selectedIndex];
+        final key = _p1[selectedIndex];
         final context = key?.currentContext;
         if (context != null) {
           final box = context.findRenderObject() as RenderBox;
           final offset = box.localToGlobal(Offset.zero);
-          final scrollableBox = _o47.position.context.storageContext.findRenderObject() as RenderBox;
+          final scrollableBox = _o60.position.context.storageContext.findRenderObject() as RenderBox;
           final yOffset = offset.dy - scrollableBox.localToGlobal(Offset.zero).dy;
-          _o47.animateTo(
+          _o60.animateTo(
             yOffset,
             duration: const Duration(milliseconds: 300),
             curve: Curves.fastOutSlowIn,
@@ -135,7 +135,7 @@ class _n42<T> extends State<UISingleSelect<T>> {
     GunCore.ensureLicensed();
     return GestureDetector(
       onTap: () {
-        widget.isDisabled ? null : _q53(context);
+        widget.isDisabled ? null : _q18(context);
       },
       child: widget.selected != null
           ? widget.builderSelected(widget.selected as T)
@@ -157,5 +157,13 @@ class _n42<T> extends State<UISingleSelect<T>> {
             ),
           ),
     );
+  }
+  static bool _z586m3x518(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  }
+  static Map<String, dynamic> _z586p3x685(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+    return r;
   }
 }

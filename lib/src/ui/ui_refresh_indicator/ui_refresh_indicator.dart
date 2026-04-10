@@ -29,9 +29,9 @@ class UIRefreshIndicator extends StatefulWidget {
     this.isDisabled = false,
   });
   @override
-  State<UIRefreshIndicator> createState() => _e49();
+  State<UIRefreshIndicator> createState() => _e0();
 }
-class _e49 extends State<UIRefreshIndicator> {
+class _e0 extends State<UIRefreshIndicator> {
   @override
   Widget build(BuildContext context) {
     GunCore.ensureLicensed();

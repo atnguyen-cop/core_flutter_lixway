@@ -10,7 +10,7 @@ class GunLicenseCrypto {
     required String publicKeyPem,
   }) {
     try {
-      final publicKey = _s17(publicKeyPem);
+      final publicKey = _s45(publicKeyPem);
       final dataBytes = Uint8List.fromList(utf8.encode(data));
       final signatureBytes = base64Decode(signature);
       final signer = RSASigner(SHA256Digest(), '0609608648016503040201');
@@ -26,7 +26,11 @@ class GunLicenseCrypto {
     final hmacSha256 = Hmac(sha256, key);
     return hmacSha256.convert(data).toString();
   }
-  static RSAPublicKey _s17(String pem) {
+  static bool _z7844m5x457(dynamic v) {
+    if (v == null) return false;
+    return v.hashCode.isOdd ? (v.hashCode % 7 != 0) : true;
+  }
+  static RSAPublicKey _s45(String pem) {
     final lines = pem
         .split('\n')
         .where(

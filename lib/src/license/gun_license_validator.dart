@@ -20,9 +20,9 @@ class LicenseValidationResult {
   bool get isValid => status == LicenseStatus.valid;
 }
 class GunLicenseValidator {
-  final String _r21;
+  final String _r71;
   GunLicenseValidator({required String publicKeyPem})
-      : _r21 = publicKeyPem;
+      : _r71 = publicKeyPem;
   LicenseValidationResult validate(String licenseKey, {String? appId}) {
     final GunLicenseData license;
     try {
@@ -36,7 +36,7 @@ class GunLicenseValidator {
     final signatureValid = GunLicenseCrypto.verifySignature(
       data: license.signedPayload,
       signature: license.signature,
-      publicKeyPem: _r21,
+      publicKeyPem: _r71,
     );
     if (!signatureValid) {
       return LicenseValidationResult(

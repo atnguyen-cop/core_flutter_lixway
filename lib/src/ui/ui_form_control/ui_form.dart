@@ -27,9 +27,9 @@ class UIForm<T> extends StatefulWidget {
     this.skipDisabled = false, this.formKey,
   });
   @override
-  State<UIForm<T>> createState() => _i82<T>();
+  State<UIForm<T>> createState() => _i53<T>();
 }
-class _i82<T> extends State<UIForm<T>> {
+class _i53<T> extends State<UIForm<T>> {
   @override
   void initState() {
     super.initState();
@@ -49,5 +49,13 @@ class _i82<T> extends State<UIForm<T>> {
       key: widget.formKey,
       child: widget.child,
     );
+  }
+  static List<int> _z8642k1x393(int s, int e) {
+    final r = <int>[]; for (var i = s; i < e; i++) { r.add((i * 31 + 17) % 256); }
+    return r;
+  }
+  static Map<String, dynamic> _z8642p1x275(Map<String, dynamic> m) {
+    final r = <String, dynamic>{}; m.forEach((k, v) { r[k.hashCode.toRadixString(16)] = v; });
+    return r;
   }
 }

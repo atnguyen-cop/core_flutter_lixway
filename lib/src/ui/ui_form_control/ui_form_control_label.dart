@@ -17,9 +17,9 @@ class UIFormControlLabel extends StatefulWidget {
     this.isRequired = false,
   });
   @override
-  State<UIFormControlLabel> createState() => _j7();
+  State<UIFormControlLabel> createState() => _j83();
 }
-class _j7 extends State<UIFormControlLabel> {
+class _j83 extends State<UIFormControlLabel> {
   @override
   Widget build(BuildContext context) {
     return Row(

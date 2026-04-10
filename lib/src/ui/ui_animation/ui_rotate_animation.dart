@@ -13,32 +13,32 @@ class UIRotateAnimation extends StatefulWidget {
     this.duration,
   });
   @override
-  State<UIRotateAnimation> createState() => _k22();
+  State<UIRotateAnimation> createState() => _k43();
 }
-class _k22 extends State<UIRotateAnimation>
+class _k43 extends State<UIRotateAnimation>
     with SingleTickerProviderStateMixin {
-  late AnimationController _l69;
+  late AnimationController _l60;
   @override
   void initState() {
     super.initState();
-    _l69 = AnimationController(
+    _l60 = AnimationController(
       duration: Duration(seconds: widget.duration!.toInt()),
       vsync: this,
     )..repeat();
   }
   @override
   dispose() {
-    _l69.dispose();
+    _l60.dispose();
     super.dispose();
   }
   @override
   Widget build(BuildContext context) {
     GunCore.ensureLicensed();
     return AnimatedBuilder(
-      animation: _l69,
+      animation: _l60,
       builder: (BuildContext context, Widget? child) {
         return Transform.rotate(
-          angle: widget.isRotate! ? _l69.value * widget.angle! : 0,
+          angle: widget.isRotate! ? _l60.value * widget.angle! : 0,
           child: child,
         );
       },

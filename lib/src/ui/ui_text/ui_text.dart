@@ -8,9 +8,9 @@ class UIText extends StatefulWidget {
   final TextAlign? textAlign;
   const UIText({super.key, required this.text, this.textStyle, this.maxLines, this.overflow, this.textAlign});
   @override
-  State<UIText> createState() => _m0();
+  State<UIText> createState() => _m11();
 }
-class _m0 extends State<UIText> {
+class _m11 extends State<UIText> {
   @override
   Widget build(BuildContext context) {
     GunCore.ensureLicensed();
